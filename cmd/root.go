@@ -45,7 +45,7 @@ var logFile *os.File
 var rootCmd = &cobra.Command{
 	Use:     "mailgun-monitor",
 	Short:   "mailgun toolkit",
-	Version: "0.1.1",
+	Version: "0.1.2",
 	Long: `
 Functions making use of the mailgun API
 `,
