@@ -30,7 +30,7 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 package main
 
-import "github.com/rstms/mailgun/cmd"
+import "github.com/rstms/mailgun-monitor/cmd"
 
 func main() {
 	cmd.Execute()

@@ -1,4 +1,4 @@
-mailgun
+mailgun-monitor
 *.core
 .postactivate
 data

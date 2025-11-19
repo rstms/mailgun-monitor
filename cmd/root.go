@@ -39,14 +39,13 @@ import (
 	"strings"
 )
 
-const Version = "0.1.1"
-
 var cfgFile string
 var logFile *os.File
 
 var rootCmd = &cobra.Command{
-	Use:   "mailgun",
-	Short: "mailgun toolkit",
+	Use:     "mailgun-monitor",
+	Short:   "mailgun toolkit",
+	Version: "0.1.1",
 	Long: `
 Functions making use of the mailgun API
 `,
@@ -65,6 +64,7 @@ func Execute() {
 		os.Exit(1)
 	}
 }
+
 func init() {
 	cobra.OnInitialize(initConfig)
 	OptionSwitch("verbose", "v", "enable diagnostic output")
@@ -84,6 +84,7 @@ func init() {
 	OptionString("logfile", "l", "stderr", "log file")
 	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "", "config file")
 }
+
 func initConfig() {
 	configDir, err := os.UserConfigDir()
 	cobra.CheckErr(err)
