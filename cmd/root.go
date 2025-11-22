@@ -79,7 +79,7 @@ func init() {
 	OptionString("domain", "d", domain, "mailgun domain")
 	cacheDir, err := os.UserCacheDir()
 	cobra.CheckErr(err)
-	OptionString("data-root", "", filepath.Join(cacheDir, "mailgun"), "database root directory")
+	OptionString("data-root", "", filepath.Join(cacheDir, "mailgun-monitor"), "database root directory")
 	OptionString("poll-interval", "", "5", "event poll interval seconds")
 	OptionString("logfile", "l", "stderr", "log file")
 	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "", "config file")
@@ -88,8 +88,8 @@ func init() {
 func initConfig() {
 	configDir, err := os.UserConfigDir()
 	cobra.CheckErr(err)
-	systemConfigFile := "/etc/mailgun/config.yaml"
-	userConfigFile := filepath.Join(configDir, "mailgun", "config.yaml")
+	systemConfigFile := "/etc/mailgun-monitor/config.yaml"
+	userConfigFile := filepath.Join(configDir, "mailgun-monitor", "config.yaml")
 	if cfgFile != "" {
 		viper.SetConfigFile(cfgFile)
 	} else if IsFile(systemConfigFile) {
@@ -103,7 +103,7 @@ func initConfig() {
 		viper.SetConfigType("yaml")
 		viper.SetConfigName(".mailgun")
 	}
-	viper.SetEnvPrefix("mailgun")
+	viper.SetEnvPrefix("mailgun-monitor")
 	if err := viper.ReadInConfig(); err == nil {
 		if viper.GetBool("verbose") {
 			fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
