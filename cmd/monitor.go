@@ -50,7 +50,7 @@ events arrive, store them to the cache db and send any required bounces.
 			api := NewClient()
 			err := api.MonitorEvents()
 			cobra.CheckErr(err)
-		}, "/var/log/mailgun")
+		}, viper.GetString("logfile"))
 	},
 }
 
